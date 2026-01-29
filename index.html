@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jacquelline M. Acla | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Jacquelline</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#family">Family</a>
+        <a href="#interests">Interests</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="/jake.jpg" alt="Jacquelline M. Acla">
+    <h1>Jacquelline M. Acla</h1>
+    <p><span id="age"></span> years old | October 30, 2008 | ♏ SCORPIO</p>
+    <p>STEM 12 | LOUIS PASTEUR | @SABNAHIS</p>
+  </section>
+
+  <section id="about" class="about animate">
+    <h2>About Me</h2>
+    <p>
+      I grew up in a city of Pampanga, but we later migrated to Occidental Mindoro due to financial reasons.
+      Although I grew up in Pampanga, we didn’t learn Kapampangan since my parents are from other regions—
+      my father is Waray from Samar and my mother is Bisaya from Quezon.
+      At home, we only speak Tagalog.
+    </p>
+    <p>
+      I am currently a Grade 12 STEM student at SABNAHIS (Sablayan National Comprehensive High School).
+    </p>
+    <p><strong>More information:</strong></p>
+    <ul>
+      <li>Facebook: <a href="https://www.facebook.com/JacqueAcla" target="_blank">Jacque Acla</a></li>
+      <li>Email: <a href="mailto:30kilynacla@gmail.com">30kilynacla@gmail.com</a></li>
+    </ul>
+  </section>
+
+  <!-- FAMILY (replaced Skills) -->
+  <section id="family" class="skills animate">
+    <h2>Family</h2>
+    <div class="skills-list">
+      <div class="skill">👨 Henry Acla — Father</div>
+      <div class="skill">👩 Banisa Acla — Mother</div>
+      <div class="skill">👦 Jovel Acla — Brother</div>
+      <div class="skill">👧 Janna Acla — Sister</div>
+    </div>
+  </section>
+
+  <!-- LIKES & INTERESTS (replaced Projects) -->
+  <section id="interests" class="projects animate">
+    <h2>Likes & Interests</h2>
+
+    <div class="projects-grid">
+      <div class="project">
+        <h3>🍽️ Favorite Foods</h3>
+        <p>• Avocado<br>• Chicken Adobo<br>• Leche Flan</p>
+      </div>
+
+      <div class="project">
+        <h3>🎵 Music Taste</h3>
+        <p>
+          • Classical Music<br>
+          • Evanescence (especially their music production and style)
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>🎬 Favorite Movies</h3>
+        <p>
+          • Home Alone<br>
+          • Ayla: The Daughter of War<br>
+          • Sad, emotional, and real-life–based films
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact animate">
+    <h2>Contact Me</h2>
+    <form onsubmit="submitForm(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="msg"></p>
+  </section>
+
+  <footer>
+    &copy; 2026 Jacquelline M. Acla
+  </footer>
+
+  <script>
+    // Scroll animation
+    const animateElements = document.querySelectorAll('.animate');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.3 });
+    animateElements.forEach(el => observer.observe(el));
+
+    // Form submission
+    function submitForm(event) {
+      event.preventDefault();
+      document.getElementById('msg').innerText =
+        "Thanks! Message sent (simulated).";
+      event.target.reset();
+    }
+
+    // Dynamic age calculation
+    function calculateAge(birthday) {
+      const birthDate = new Date(birthday);
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+      return age;
+    }
+
+    document.getElementById('age').innerText =
+      calculateAge('2008-10-30');
+  </script>
+
+</body>
+</html>
